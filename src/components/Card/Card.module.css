@@ -1,0 +1,44 @@
+.Card {
+  background-color: bisque;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px 20px;
+  min-width: 300px;
+  position: relative;
+}
+
+.asterisk {
+  display: block;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  font-size: 30px;
+  text-align: center;
+  float: right;
+  cursor: grab;
+}
+
+.dragging {
+  cursor: grabbing;
+}
+
+.heading {
+  font-size: 18px;
+  text-align: center;
+}
+
+.todos {
+  margin: 10px auto;
+}
+
+.add {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px 10px;
+  float: right;
+  margin-right: 12.5px; /* так позиция полностью совпадает с плюсом из формы */
+}

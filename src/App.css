@@ -1,0 +1,12 @@
+.App {
+  background-color: linen;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  min-height: 400px;
+  width: 600px;
+  margin: 50px auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: sans-serif;
+}

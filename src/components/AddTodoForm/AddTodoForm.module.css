@@ -1,0 +1,30 @@
+.form {
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  position: relative;
+}
+
+.input {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  width: 100px;
+  text-align: center;
+  font: inherit;
+}
+
+.timeInput {
+  text-align: right;
+  padding-right: 10px;
+}
+
+.submit {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px 10px;
+}
