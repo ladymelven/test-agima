@@ -18,19 +18,10 @@ const initialState = {
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
 		case actions.GET_TODOS:
-			const todos = JSON.parse(window.localStorage.getItem("todos"));
-			if (todos === null) {
-				//при первом запуске и на случай, если юзер почистил localStorage
-				window.localStorage.setItem(
-					"todos",
-					JSON.stringify(initialState.todos)
-				);
-			}
 			return {
 				...state,
-				todos: todos
+				todos: action.todos
 			};
-
 		case actions.ADD:
 			const newTodos = JSON.parse(JSON.stringify(state.todos));
 			//потенциально дорогая операция, но для небольшого приложения ок + железно deep copy
@@ -42,8 +33,6 @@ const reducer = (state = initialState, action) => {
 			};
 			newTodos[state.weekday].push(newTodo);
 			newTodos[state.weekday].sort((a, b) => (a.time > b.time ? 1 : -1));
-
-			window.localStorage.setItem("todos", JSON.stringify(newTodos));
 			return {
 				...state,
 				todos: newTodos
@@ -54,7 +43,6 @@ const reducer = (state = initialState, action) => {
 			updatedTodos[state.weekday] = updatedTodos[state.weekday].filter(
 				todo => todo.id !== action.id
 			);
-			window.localStorage.setItem("todos", JSON.stringify(updatedTodos));
 			return {
 				...state,
 				todos: updatedTodos
@@ -69,7 +57,6 @@ const reducer = (state = initialState, action) => {
 			todosTimeUpdated[state.weekday].sort((a, b) =>
 				a.time > b.time ? 1 : -1
 			);
-			window.localStorage.setItem("todos", JSON.stringify(todosTimeUpdated));
 			return {
 				...state,
 				todos: todosTimeUpdated
@@ -81,7 +68,6 @@ const reducer = (state = initialState, action) => {
 				todo => todo.id === action.payload.id
 			);
 			taskUpdated.task = action.payload.task;
-			window.localStorage.setItem("todos", JSON.stringify(todosTaskUpdated));
 			return {
 				...state,
 				todos: todosTaskUpdated
@@ -89,12 +75,10 @@ const reducer = (state = initialState, action) => {
 
 		case actions.COPY:
 			const copiedDayTodos = JSON.parse(JSON.stringify(state.todos));
-			console.log();
 			copiedDayTodos[action.day] = [];
 			copiedDayTodos[state.weekday].forEach(todo => {
 				copiedDayTodos[action.day].push({ ...todo });
 			}); //нужный уровень вложенности: внутри туду хранятся только примитивы
-			window.localStorage.setItem("todos", JSON.stringify(copiedDayTodos));
 			return {
 				...state,
 				todos: copiedDayTodos

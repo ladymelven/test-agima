@@ -10,6 +10,11 @@ import reducer from "./store/reducer";
 
 const store = createStore(reducer);
 
+store.subscribe(() => {
+	const { todos } = store.getState();
+	window.localStorage.setItem("todos", JSON.stringify(todos));
+});
+
 const App = () => {
 	return (
 		<Provider store={store}>

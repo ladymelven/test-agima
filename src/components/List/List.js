@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { GET_TODOS, COPY, SWITCH_DAY } from "../../store/actions";
+import { getTodos, COPY, SWITCH_DAY } from "../../store/actions";
 import styles from "./List.module.css";
 
 const List = React.memo(props => {
@@ -87,7 +87,7 @@ const mapDispatchToProps = dispatch => {
 	return {
 		onSwitch: day => dispatch({ type: SWITCH_DAY, day: day }),
 		onCopy: day => dispatch({ type: COPY, day: day }),
-		getTodos: () => dispatch({ type: GET_TODOS })
+		getTodos: () => dispatch(getTodos())
 	};
 };
 
